@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodeCanvas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: darkblue;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .homepage {
+            background-color: lightblue;
+            background-position: center;
+            height: 570px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .homepage-content {
+            text-align: center;
+        }
+
+        .homepage-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .homepage-content p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-family: "Times New Roman", Times, serif; /* Change font family */
+            font-weight: bold; /* Make welcome message bold */
+            text-align: center; /* Center align the text */
+            line-height: 1.5; /* Set line height for better readability */
+        }
+
+        .homepage-content img {
+            border-radius: 15%;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: blue;
+        }
+
+        footer {
+            background-color: darkblue;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        /* Styling for the "Hello, username" text */
+        .greeting {
+            color: darkcyan;
+            font-size: 36px;
+            font-weight: bold;
+            font-style: italic; /* Make greeting italic */
+            margin-bottom: 30px; /* Increase space between greeting and welcome message */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CodeCanvas: Unleash Your Digital Potential</h1><br>
+        <nav>
+            <ul>
+                <li><a href="aboutus_1.html">About Us</a></li>
+                <li><a href="ContactUs_1.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="homepage">
+        <div class="homepage-content">
+            <div class="greeting">
+                <script>
+                    const username = sessionStorage.getItem('username');
+                    document.write('<i>Hello, ' + username + " !!</i>");
+                </script>
+            </div>
+            <p style="font-family: 'Times New Roman', Times, serif; font-weight: bold;"> Welcome to CodeCanvas:<br> An online learning platform designed to help you start your journey to knowledge with our wide range of courses.</p><br>
+            <a href="CheckOutOurCourses.html" class="button">Check out our courses</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Content for about us</p>
+        </div>
+    </section>
+
+    <footer>
+        <Marquee direction="right">Learn anywhere and anytime at your own pace</Marquee>
+    </footer>
+
+</body>
+</html>

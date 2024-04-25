@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Courses</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: darkblue;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the courses horizontally */
+            padding: 20px;
+        }
+
+        .course {
+            background-color: lightblue;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 40px;
+            width: 80%; 
+            box-sizing: border-box;
+            position: relative;
+            text-decoration: none;
+            transition: background-color 0.3s, width 0.3s, height 0.3s;
+        }
+
+        .course:hover {
+            background-color: lightseagreen;
+            width: calc(88% + 40px); /* Increase width on hover */
+            height: 190px;        
+        }
+
+        .course:hover img {
+            width: 300px; /* Adjust the size of the image on hover */
+        }
+
+        .course-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            transition: width 0.3s; /* Smooth transition for image size change */
+        }
+
+        footer {
+            background-color: darkblue;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .course-description {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .course h2 {
+            color: brown;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header style="height: 50px; display: flex; justify-content: center; align-items: center;">
+        <h1>Our Courses</h1>
+    </header>
+
+    <section class="courses">
+        <a href="AI_and_ML.html" class="course" target="_blank">
+            <h2 style="margin-bottom: 25px;">Artificial Intelligence and Machine Learning</h2>
+            <pre class="course-description"><i>Master the future of technology. Learn in-demand AI & ML skills to revolutionize industries
+and unlock exciting career opportunities.</i></pre>
+            <img src="AIML.webp" class="course-image">
+        </a>
+    
+        <a href="DataScience.html" class="course" target="_blank">
+            <h2>Data Science</h2>
+            <pre class="course-description"><i>Launch your data-driven career. Master the skills to clean,
+analyze, and visualize data with our comprehensive data science
+program.</i></pre>
+            <img src="DataScience.jpeg" class="course-image" >
+        </a>
+    
+        <a href="cybersecurity.html" class="course" target="_blank">
+            <h2>Cybersecurity</h2>
+            <pre class="course-description"><i>Defend against digital threats and safeguard the future with our 
+Cybersecurity course, where you'll learn the latest techniques to 
+protect data and systems from cyber attacks.</i></pre>
+            <img src="Cybersecurity.jpeg" class="course-image">
+        </a>
+
+        <a href="UI_UX.html" class="course" target="_blank">
+            <h2>UI/UX Design</h2>
+            <pre class="course-description"><i>Embark on a journey to master the art of user-centric design with 
+our UI/UX course. Create intuitive, engaging interfaces that 
+captivate users and drive success in the digital landscape.</i></pre>
+            <img src="UiUx.jpeg" class="course-image">
+        </a>
+
+        <a href="web_development.html" class="course" target="_blank">
+            <h2>Web Development</h2>
+            <pre class="course-description"><i>Learn the latest technologies and frameworks, and unleash your 
+creativity to build stunning and interactive websites that leave
+a lasting impact.</i></pre>
+            <img src="WebDev.jpeg" class="course-image">
+        </a>
+        
+        <a href="dsa.html" class="course" target="_blank">
+            <h2>Data structures and algorithms</h2>
+            <pre class="course-description"><i>Unlock the secrets of Data Structures and Algorithms with our expert-led course -
+Build your coding prowess and conquer complex problems with ease!</i></pre>
+            <img src="ProgrammingLang.jpeg" class="course-image">
+        </a>
+
+    </section>
+
+    <footer style="height: 20px; display: flex; justify-content: center; align-items: center;">
+        <p>Back to <a href="OnlineLearning.html" style="color: white;">Home</a></p>
+    </footer>
+</body>
+</html>

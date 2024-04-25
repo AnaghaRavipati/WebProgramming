@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:beige ;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 18px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px; /* Increase padding for bigger size */
+      background-color: blue; /* Change background color to blue */
+      color: white; /* Change text color to white */
+      border: none; /* Remove border */
+      border-radius: 5px; /* Add border radius for rounded corners */
+      cursor: pointer; /* Add cursor pointer for hover effect */
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+    background-color: darkblue; /* Darken the background color on hover */
+  }
+
+    #timerContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-weight: bold;
+      font-size: 24px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    #timer {
+      color: red; /* Set timer text color to red */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="timerContainer"> <!-- Timer container -->
+    <span id="timer">01:00</span> <!-- Timer element -->
+  </div>
+  <br>
+  <h1>Quiz Form</h1>
+  <form id="quizForm"><br><br>
+    <div class="question">
+      <p><b>1.In web design, what does "user flow" refer to?</b></p>
+      <input type="radio" name="q1" value="The movement of users through a website and the actions they take."> The movement of users through a website and the actions they take.<br>
+      <input type="radio" name="q1" value="The aesthetics and visual appeal of a website."> The aesthetics and visual appeal of a website. <br>
+      <input type="radio" name="q1" value="The design of buttons and navigation bars."> The design of buttons and navigation bars.<br>
+      <input type="radio" name="q1" value="The loading time of web pages."> The loading time of web pages.<br>
+      <span class="correct-answer" style="display:none;">Correct answer: The movement of users through a website and the actions they take.</span>
+    </div><br>
+    <div class="question">
+      <p><b>2. Which term refers to the process of designing web interfaces that are easy for users to understand and navigate?</b></p>
+      <input type="radio" name="q2" value="Wireframing "> Wireframing <br>
+      <input type="radio" name="q2" value="Prototyping "> Prototyping <br>
+      <input type="radio" name="q2" value="User Interface (UI) Design">User Interface (UI) Design <br>
+      <input type="radio" name="q2" value="Usability "> Usability  <br>
+      <span class="correct-answer" style="display:none;">Correct answer: User Interface (UI) Design</span>
+    </div><br>
+    <div class="question">
+      <p><b>3. What does "accessibility" refer to in web design?</b></p>
+      <input type="radio" name="q3" value="A design principle that focuses on aesthetics"> A design principle that focuses on aesthetics. <br>
+      <input type="radio" name="q3" value="A design that is only available to specific users."> A design that is only available to specific users.<br>
+      <input type="radio" name="q3" value="Ensuring that a website is usable and understandable by individuals with disabilities."> Ensuring that a website is usable and understandable by individuals with disabilities. <br>
+      <input type="radio" name="q3" value="A design that is highly interactive."> A design that is highly interactive.<br>
+      <span class="correct-answer" style="display:none;">Correct answer: Ensuring that a website is usable and understandable by individuals with disabilities.</span>
+    </div><br>
+    <div class="question">
+      <p><b>4. What is the primary goal of "user testing" in web design?</b></p>
+      <input type="radio" name="q4" value="To create engaging animations and transitions.">To create engaging animations and transitions.<br>
+      <input type="radio" name="q4" value="To optimize website performance.">To optimize website performance. <br>
+      <input type="radio" name="q4" value="To analyze user interactions and gather feedback"> To analyze user interactions and gather feedback <br>
+      <input type="radio" name="q4" value="To design a visually appealing website.">To design a visually appealing website.<br>
+      <span class="correct-answer" style="display:none;">Correct answer:To analyze user interactions and gather feedback</span>
+    </div><br>
+    <div class="question">
+      <p><b>5.What is the primary goal of "content strategy" in web design?</b></p>
+      <input type="radio" name="q5" value="To optimize website performance."> To optimize website performance.<br>
+      <input type="radio" name="q5" value="To design engaging animations and transitions."> To design engaging animations and transitions.<br>
+      <input type="radio" name="q5" value="To create and manage content that meets user needs and business goals">To create and manage content that meets user needs and business goals<br>
+      <input type="radio" name="q5" value="To create visually appealing graphics."> To create visually appealing graphics.<br>
+      <span class="correct-answer" style="display:none;">Correct answer: To create and manage content that meets user needs and business goals</span>
+    </div><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const quizForm = document.getElementById('quizForm');
+    const timerElement = document.getElementById('timer');
+    let secondsLeft = 60;
+
+    // Function to update the timer
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      secondsLeft--;
+
+      // Stop the timer when time runs out
+      if (secondsLeft < 0) {
+        clearInterval(timerInterval);
+        timerElement.textContent = "Time's up!";
+        quizForm.removeEventListener('submit', handleSubmit);
+        quizForm.submit(); // Submit the form automatically when time runs out
+      }
+    }
+
+    // Call updateTimer every second
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // Function to handle form submission
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const answers = {
+        q1: 'The movement of users through a website and the actions they take.',
+        q2: 'User Interface (UI) Design',
+        q3: 'Ensuring that a website is usable and understandable by individuals with disabilities.',
+        q4: 'To analyze user interactions and gather feedback',
+        q5: 'To create and manage content that meets user needs and business goals'
+      };
+
+      let score = 0;
+
+      for (const question in answers) {
+        const userAnswer = document.querySelector('input[name="' + question + '"]:checked');
+        const correctAnswer = answers[question];
+
+        if (userAnswer) {
+          if (userAnswer.value === correctAnswer) {
+            score++;
+            userAnswer.parentElement.style.color = 'green'; // Highlight correct answer
+          } else {
+            userAnswer.parentElement.style.color = 'red'; // Highlight incorrect answer
+            userAnswer.parentElement.insertAdjacentHTML('beforeend', '<br><span class="correct-answer">' + correctAnswer + '</span>'); // Display correct answer
+          }
+        }
+      }
+
+      alert('Your score is: ' + score);
+    }
+
+    // Attach event listener for form submission
+    quizForm.addEventListener('submit', handleSubmit);
+  </script>
+</body>
+</html>

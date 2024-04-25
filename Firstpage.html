@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+    }
+
+    .left-section {
+      flex: 70%; /* 70% width */
+      background-image: url('Background.jpeg'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .right-section {
+      flex: 30%; /* 30% width */
+      background-color: #f4f4f4; /* Light grey background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .left-section h1 {
+      color: #00008b; /* Dark blue color */
+      font-size: 40px;
+    }
+
+    .login-form {
+      width: 80%;
+      max-width: 300px;
+      padding: 20px;
+      background: #f4f4f4;
+      border-radius: 5px;
+    }
+
+    .login-form h2 {
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .signup-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <h1>CodeCanvas: Unleash your digital potential</h1>
+    </div>
+    <div class="right-section">
+      <form id="loginForm" class="login-form">
+        <h1>Login</h1>
+        <div class="input-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>       
+        <button type="submit">Login</button>
+        <div class="signup-link">
+          <span>Don't have an account? </span><a href="#" id="signupLink">Sign up</a>
+        </div>
+      </form>
+      <form id="signupForm" class="login-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+          <label for="newUsername">Username:</label>
+          <input type="text" id="newUsername" name="newUsername" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+          <label for="newPassword">Password:</label>
+          <input type="password" id="newPassword" name="newPassword" required>
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username.trim() !== '') {
+        sessionStorage.setItem('username', username);
+        window.location.href = 'OnlineLearning.html'; // Redirect to OnlineLearning.html
+      } else {
+        alert('Please enter a username.'); // Alert the user if the username is empty
+      }
+    });
+
+    document.getElementById('signupLink').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var newUsername = document.getElementById('newUsername').value;
+      var email = document.getElementById('email').value;
+      var newPassword = document.getElementById('newPassword').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (newUsername.trim() !== '' && email.trim() !== '' && newPassword.trim() !== '' && confirmPassword.trim() !== '') {
+        if (newPassword === confirmPassword) {
+          sessionStorage.setItem('username', newUsername);
+          window.location.href = 'OnlineLearning.html'; // Redirect to OnlineLearning.html
+        } else {
+          alert('Passwords do not match.');
+        }
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+
+  </script>
+</body>
+</html>

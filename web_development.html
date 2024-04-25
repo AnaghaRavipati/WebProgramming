@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Web development</title>
+        <style>
+            pre {
+                white-space: pre-wrap; /* This is the key for wrapping */
+                word-wrap: break-word;
+            }
+    
+            .description {
+                font-family: Arial, sans-serif; /* Change the font family */
+                line-height: 1.5; /* Increase line padding */
+            }
+    
+            #section-links {
+                position: absolute;
+                top: 200px; /* Adjust as needed */
+                left: 10px;
+                background-color: lightcyan;
+                padding: 15px; /* Increased padding */
+                border-radius: 5px;
+                width: 96%; /* Increased width */
+            }
+    
+            /* Style for section links */
+            #section-links a {
+                display: block;
+                margin-bottom: 5px;
+                color: brown; /* Text color */
+                text-decoration: none;
+                padding: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="window.location.href='CheckOutOurCourses.html'" style="position: absolute; top: 10px; left: 10px; background-color: lightblue; border: none; padding: 10px 20px;"> Go back to courses</button><br><br>
+        <h1 style="text-align: center; color: darkblue; font-family: Arial, sans-serif;">Web development</h1><br><br><br>
+        <div id="section-links">
+            <b><h3>List of contents:</h3></b>
+            <a href="#what-is-wd" class="smooth-scroll">What is Web development?</a>
+            <a href="#frontend" class="smooth-scroll">Frontend Development</a>
+            <a href="#fe_tech" class="smooth-scroll">Popular frontend technologies</a>
+            <a href="#backend" class="smooth-scroll">Backend Development</a>
+            <a href="#be_tech" class="smooth-scroll">Popular backend technologies</a>
+            <a href="#full_stack" class="smooth-scroll">What Is a Full-Stack Developer?</a>
+            <a href="#databases" class="smooth-scroll">Working with Databases</a>
+            <a href="#quiz" class="smooth-scroll">Quiz</a>
+        </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<pre class="description">
+<b><u id="what-is-wd">What is Web development?</b></u><br>
+Web development refers to the creating, building, and maintaining of websites. It includes aspects such as web design, web publishing, web programming, and database management. It is the creation of an application that works over the internet i.e. websites.<br>
+Web development can be classified into 2 ways:
+1.Frontend development
+2.Backend development<br>
+
+<b><u id="frontend">Frontend Development</u></b><br>
+The part of a website where the user interacts directly is termed as front end. It is also referred to as the 'client side' of the application.
+<img src="frontend.png" alt="frontend" height=600px width=850px><br>
+
+<b><u id="fe_tech">Popular frontend technologies:</u></b><br>
+1. <b>HTML: </b>HTML stands for HyperText Markup Language. It is used to design the front end portion of web pages using markup language. It acts as a skeleton for a website since it is used to make the structure of a website.<br>
+2. <b>CSS: </b>Cascading Style Sheets fondly referred to as CSS is a simply designed language intended to simplify the process of making web pages presentable. It is used to style our website.<br>
+3. <b>Javascript: </b>JavaScript is a scripting language used to provide a dynamic behavior to our website.<br>
+4. <b>Bootstrap: </b>Bootstrap is a free and open-source tool collection for creating responsive websites and web applications. It is the most popular CSS framework for developing responsive, mobile-first websites. Nowadays, the websites are perfect for all browsers (IE, Firefox, and Chrome) and for all sizes of screens (Desktop, Tablets, Phablets, and Phones).<br>
+
+<b><u id="backend">Backend Development</u></b><br>
+Backend is the server side of a website. It is part of the website that users cannot see and interact with. It is the portion of software that does not come in direct contact with the users. It is used to store and arrange data.<br>
+<img src="backend.png" alt="backend" height=600px width=850px><br>
+
+
+<b><u id="be_tech">Popular backend technologies: </u></b><br>
+1. <b>PHP: </b>PHP is a server-side scripting language designed specifically for web development.<br>
+2. <b>Java: </b>Java is one of the most popular and widely used programming languages. It is highly scalable.<br>
+3. <b>Python: </b>Python is a programming language that lets you work quickly and integrate systems more efficiently.<br>
+4. <b>Node.js: </b> Node.js is an open source and cross-platform runtime environment for executing JavaScript code outside a browser.<br>
+
+<b><u id="full_stack">What Is a Full-Stack Developer?</u></b><br>
+A Full-Stack Developer is someone familiar with both front- and back-end development. Full Stack Developers usually understand a wide variety of programming languages and because of their versatility, they might be given more of a leadership role on projects than developers who specialize. They are generalists, adept at wearing both hats, and familiar with every layer of development. Obviously, employers want to hire Full-Stack Developers – according to an Indeed study, they are the fourth-most in-demand job in tech.<br>
+
+<b><u id="databases">Working with Databases </u></b><br>
+Databases are critical in back end development. You'll need to know how to manage and access data to grow as a back end developer. 
+
+Structured Query Language (SQL) is a query language popular among data scientists and back end developers. It's used to create databases, add new data into existing databases and modify data within databases. SQL allows developers to query data from relational databases -- databases where data is organized into tables. MySQL and Microsoft SQL Server are a few widely used options. 
+You'll also need to know about working with NoSQL databases. These databases don't structure their data in tables, columns and rows. Rather, these databases are agile, flexible and straightforward. They're a great option for a business that works with massive amounts of data that can't be efficiently organized within a conventional table.<br>
+</pre>
+
+<button onclick="window.open('quiz_wd.html', '_blank')" id = "quiz" style="margin-bottom: 20px; background-color: lightseagreen; border: none; padding: 15px 30px; font-size: 18px; color: white;">Attempt Quiz</button>
+<script>
+    document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+    </body>
+</html>

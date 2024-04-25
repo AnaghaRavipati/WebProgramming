@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:beige ;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px; /* Increase padding for bigger size */
+      background-color: blue; /* Change background color to blue */
+      color: white; /* Change text color to white */
+      border: none; /* Remove border */
+      border-radius: 5px; /* Add border radius for rounded corners */
+      cursor: pointer; /* Add cursor pointer for hover effect */
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+    background-color: darkblue; /* Darken the background color on hover */
+  }
+
+    #timerContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-weight: bold;
+      font-size: 24px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    #timer {
+      color: red; /* Set timer text color to red */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="timerContainer"> <!-- Timer container -->
+    <span id="timer">01:00</span> <!-- Timer element -->
+  </div>
+  <br>
+  <h1>Quiz Form</h1>
+  <form id="quizForm"><br><br>
+    <div class="question">
+      <p><b>1. What are the features of cyber security?</b></p>
+      <input type="radio" name="q1" value="Compliance"> Compliance<br>
+      <input type="radio" name="q1" value="Defense against internal threats"> Defense against internal threats<br>
+      <input type="radio" name="q1" value="Threat Prevention"> Threat Prevention<br>
+      <input type="radio" name="q1" value="All of the above"> All of the above<br>
+      <span class="correct-answer" style="display:none;">Correct answer: All of the above</span>
+    </div><br>
+    <div class="question">
+      <p><b>2. Which of the following is not a cybercrime?</b></p>
+      <input type="radio" name="q2" value=" Denial of Service">  Denial of Service<br>
+      <input type="radio" name="q2" value="Man in the Middle"> Man in the Middle<br>
+      <input type="radio" name="q2" value="Malware">Malware <br>
+      <input type="radio" name="q2" value="AES"> AES <br>
+      <span class="correct-answer" style="display:none;">Correct answer: AES</span>
+    </div><br>
+    <div class="question">
+      <p><b>3. What is the existence of weakness in a system or network is known as?</b></p>
+      <input type="radio" name="q3" value="Attack"> Attack<br>
+      <input type="radio" name="q3" value="Exploit"> Exploit<br>
+      <input type="radio" name="q3" value="Vulnerability"> Vulnerability <br>
+      <input type="radio" name="q3" value="Threat"> Threat<br>
+      <span class="correct-answer" style="display:none;">Correct answer: Vulnerability</span>
+    </div><br>
+    <div class="question">
+      <p><b>4. In ________ some cyber-criminals redirect the legitimate users to different phishing sites and web pages via emails, IMs, ads and spyware.</b></p>
+      <input type="radio" name="q4" value="URL Redirection"> URL Redirection<br>
+      <input type="radio" name="q4" value="DoS">DoS <br>
+      <input type="radio" name="q4" value="Phishing">Phishing <br>
+      <input type="radio" name="q4" value="MiTM attack"> MiTM attack <br>
+      <span class="correct-answer" style="display:none;">Correct answer: Phishing</span>
+    </div><br>
+    <div class="question">
+      <p><b>5. Which of the below is a popular victim of cyber attackers looking to gain the IP address of a target or victim user?</b></p>
+      <input type="radio" name="q5" value="emails">emails<br>
+      <input type="radio" name="q5" value="websites"> websites <br>
+      <input type="radio" name="q5" value="IP tracer"> IP tracer<br>
+      <input type="radio" name="q5" value="web pages"> web pages<br>
+      <span class="correct-answer" style="display:none;">Correct answer: websites</span>
+    </div><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const quizForm = document.getElementById('quizForm');
+    const timerElement = document.getElementById('timer');
+    let secondsLeft = 60;
+
+    // Function to update the timer
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      secondsLeft--;
+
+      // Stop the timer when time runs out
+      if (secondsLeft < 0) {
+        clearInterval(timerInterval);
+        timerElement.textContent = "Time's up!";
+        quizForm.removeEventListener('submit', handleSubmit);
+        quizForm.submit(); // Submit the form automatically when time runs out
+      }
+    }
+
+    // Call updateTimer every second
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // Function to handle form submission
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const answers = {
+        q1: 'All of the above',
+        q2: 'AES',
+        q3: 'Vulnerability',
+        q4: 'Phishing',
+        q5: 'websites'
+      };
+
+      let score = 0;
+
+      for (const question in answers) {
+        const userAnswer = document.querySelector('input[name="' + question + '"]:checked');
+        const correctAnswer = answers[question];
+
+        if (userAnswer) {
+          if (userAnswer.value === correctAnswer) {
+            score++;
+            userAnswer.parentElement.style.color = 'green'; // Highlight correct answer
+          } else {
+            userAnswer.parentElement.style.color = 'red'; // Highlight incorrect answer
+            userAnswer.parentElement.insertAdjacentHTML('beforeend', '<br><span class="correct-answer">' + correctAnswer + '</span>'); // Display correct answer
+          }
+        }
+      }
+
+      alert('Your score is: ' + score);
+    }
+
+    // Attach event listener for form submission
+    quizForm.addEventListener('submit', handleSubmit);
+  </script>
+</body>
+</html>
