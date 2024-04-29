@@ -47,6 +47,14 @@
             text-align: center;
         }
 
+
+		#root {
+			position: absolute; /* Position the root div absolutely within the parent */
+			bottom: 150px; /* Adjust the distance from the bottom as needed */
+			left: 50%; /* Center the root div horizontally */
+			transform: translateX(-50%); /* Center the root div horizontally */
+		}
+
         .homepage-content h2 {
             font-size: 36px;
             margin-bottom: 20px;
@@ -121,8 +129,10 @@
             <p style="font-family: 'Times New Roman', Times, serif; font-weight: bold;"> Welcome to CodeCanvas:<br> An online learning platform designed to help you start your journey to knowledge with our wide range of courses.</p><br>
             <a href="CheckOutOurCourses.html" class="button">Check out our courses</a>
         </div>
-    </section>
+		<div id="root"></div>
+        </section>
 
+		
     <section id="about" class="about">
         <div class="container">
             <h2>About Us</h2>
@@ -133,6 +143,32 @@
     <footer>
         <Marquee direction="right">Learn anywhere and anytime at your own pace</Marquee>
     </footer>
+	
+	 <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 
+        <script type="text/babel">
+        // Your React component code here
+            function Counter() {
+                const [count, setCount] = React.useState(0);
+    
+                const incrementCount = () => setCount(count + 1);
+    
+                React.useEffect(() => {
+                    document.title = `You completed ${count} courses`;
+                });
+    
+                return (
+                <div>
+                    <p>You completed {count} courses</p>
+                    <button style={{ backgroundColor: 'darkblue', color: 'white' }} onClick={incrementCount}>Course Completion counter</button>
+                </div>
+                );
+            }
+  
+            // Render the Counter component into the root element
+            ReactDOM.render(<Counter />, document.getElementById('root'));
+		 </script>	
 </body>
 </html>
